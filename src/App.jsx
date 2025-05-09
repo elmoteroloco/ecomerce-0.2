@@ -36,7 +36,7 @@ function App() {
         const nuevoCarrito = productosCarrito.filter((p) => p.id !== id)
         setProductosCarrito(nuevoCarrito)
     }
-
+    console.log("Valor de import.meta.env.BASE_URL:", import.meta.env.BASE_URL)
     const basename = import.meta.env.BASE_URL
     return (
         <Router basename={basename}>
