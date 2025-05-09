@@ -1,0 +1,34 @@
+[
+    {
+      "id": "prod_001",
+      "creado": "2024-03-10T10:00:00Z",
+      "nombre": "Mamboreta",
+      "imagen": "https://res.cloudinary.com/dy5u2krtv/image/upload/v1625874321/crisol-1-mamboreta_cxonrb.jpg",
+      "precio": "$ 23 000",
+      "descripción": "Pendiente/Broche, bronce y acero"
+    },
+    {
+      "id": "prod_002",
+      "creado": "2024-03-10T11:30:00Z",
+      "nombre": "Ouroboros",
+      "imagen": "https://res.cloudinary.com/dy5u2krtv/image/upload/v1746741033/crisol-2-ouroboros_jmtost.jpg",
+      "precio": "$ 45 000",
+      "descripción": "Anillo en plata sterling patinada"
+    },
+    {
+      "id": "prod_003",
+      "creado": "2024-03-11T09:15:00Z",
+      "nombre": "Tentáculos",
+      "imagen": "https://res.cloudinary.com/dy5u2krtv/image/upload/v1746741034/crisol-3-cthulhu_wiwt7j.jpg",
+      "precio": "$ 45 000",
+      "descripción": "Anillo en plata sterling patinada"
+    },
+    {
+      "id": "prod_004",
+      "creado": "2024-03-11T14:05:00Z",
+      "nombre": "Hamadrias",
+      "imagen": "https://res.cloudinary.com/dy5u2krtv/image/upload/v1746741034/crisol-4-hamadrias_mp3kyk.jpg",
+      "precio": "$ 65 000",
+      "descripción": "Accesorio celular bronce plateado"
+    }
+  ]

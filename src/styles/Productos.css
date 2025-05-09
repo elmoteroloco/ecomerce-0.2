@@ -1,0 +1,34 @@
+.productos-conteiner {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 350px;
+    width: 100%;
+}
+
+.producto-card {
+    background-color: bisque;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 23%;
+    height: 100%;
+    text-align: center;
+    margin-top: 5px;
+    /* Animación*/
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.producto-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.producto-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+}
