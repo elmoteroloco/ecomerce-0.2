@@ -16,7 +16,7 @@
 }
 
 .content-wrapper {
-    flex-grow: 1; /* El área de contenido principal crece para empujar el footer (si estuviera aquí) */
-    display: flex; /* Para que el componente de la ruta (ej. Home) pueda usar flex para su altura */
-    flex-direction: column; /* Los hijos del content-wrapper se apilan verticalmente */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }

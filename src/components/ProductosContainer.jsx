@@ -13,47 +13,24 @@ function ProductosContainer({ functionCarrito }) {
         fetch(JSONBIN_URL)
             .then((respuesta) => {
                 if (!respuesta.ok) {
-                    // Si la respuesta no es OK (ej. 404, 500),
-                    // lanzamos un error para que lo capture el .catch()
+                    // Si 'respuesta' no es OK (ej. 404, 500) se fuerza un error para el .catch()
                     throw new Error(`Error HTTP: ${respuesta.status} ${respuesta.statusText}`)
                 }
                 return respuesta.json()
             })
             .then((datos) => {
                 if (datos && datos.record) {
-                    // setProductos(datos.record)
-                    // console.log("Productos cargados desde jsonbin:", datos.record)
-                    // Transformar los productos para asegurar que el precio sea numérico
                     const productosTransformados = datos.record.map((prod) => ({
                         ...prod,
-                        // Intenta convertir el precio a número. Si falla, será NaN.
-                        // También nos aseguramos de que si el precio no existe o es inválido, se asigne NaN
-                        // para que las comprobaciones posteriores (isNaN) funcionen correctamente.
-                        precio:
-                            prod.precio !== undefined && prod.precio !== null
-                                ? parseFloat(prod.precio)
-                                : NaN
+                        precio: parseFloat(prod.precio) || 0
                     }))
                     setProductos(productosTransformados)
-                    // console.log("Productos cargados desde jsonbin (original):", datos.record);
-                    // console.log("Productos transformados (precio como número):", productosTransformados);
                 } else {
-                    // console.warn(
-                    //     "La respuesta de jsonbin.io no contiene la propiedad 'record' esperada:",
-                    //     datos
-                    // )
-                    // setProductos(datos || [])
-                    // console.warn(
-                    //     "La respuesta de jsonbin.io no contiene la propiedad 'record' esperada:",
-                    //     datos
-                    // );
-                    setProductos(datos && Array.isArray(datos) ? datos : []) // Asegurar que sea un array
+                    setProductos(datos && Array.isArray(datos) ? datos : [])
                 }
                 setCargando(false)
             })
             .catch((err) => {
-                // Cambiado 'error' a 'err' para evitar sombrear el estado 'error'
-                //console.error("Error al cargar productos:", err)
                 setError(`Hubo un problema al cargar los productos: ${err.message}`)
                 setCargando(false)
             })

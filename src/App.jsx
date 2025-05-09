@@ -36,8 +36,7 @@ function App() {
         const nuevoCarrito = productosCarrito.filter((p) => p.id !== id)
         setProductosCarrito(nuevoCarrito)
     }
-    // console.log("Valor de import.meta.env.BASE_URL:", import.meta.env.BASE_URL) // Comentamos esto por ahora
-    // Forzamos el basename para probar directamente
+    // basename "forzado" para asegurar que al refrescar GitHub-pages se mantenga en ruta correcta
     const basename = "/ecomerce-0.2/"
     return (
         <Router basename={basename}>

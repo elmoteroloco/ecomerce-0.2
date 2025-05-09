@@ -1,11 +1,7 @@
 import "../styles/Carrito.css"
 
 function CarritoCard({ producto, funcionDisparadora }) {
-    // Asegurarse de que precio y cantidad sean números
-    const precioNumerico = parseFloat(producto.precio)
-    const cantidadNumerica = parseInt(producto.cantidad, 10)
-    const subtotal =
-        isNaN(precioNumerico) || isNaN(cantidadNumerica) ? 0 : precioNumerico * cantidadNumerica
+    const subtotal = producto.precio * producto.cantidad
 
     function borrarDelCarrito() {
         // console.log("Paso 1")
@@ -25,9 +21,7 @@ function CarritoCard({ producto, funcionDisparadora }) {
             <img className="carrito-image" src={producto.imagen}></img>
             <span style={{ color: "black" }}>{producto.cantidad}</span>
             <div className="carrito-unitario">
-                <span style={{ color: "black" }}>
-                    {isNaN(precioNumerico) ? "N/A" : precioNumerico.toFixed(2)} $
-                </span>
+                <span style={{ color: "black" }}>{producto.precio.toFixed(2)} $</span>
             </div>
             <div className="carrito-sub">
                 <span style={{ color: "black" }}>{subtotal.toFixed(2)} $</span>
