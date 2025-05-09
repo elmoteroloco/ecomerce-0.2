@@ -41,26 +41,32 @@ function App() {
     const basename = "/ecomerce-0.2/"
     return (
         <Router basename={basename}>
-            <div>
+            <div className="app-container">
+                {" "}
+                {/* Contenedor principal de la app */}
                 <Nav productosCarrito={productosCarrito} />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route
-                        path="/productos"
-                        element={<ProductosContainer functionCarrito={funcionCarrito} />}
-                    />
-                    <Route
-                        path="/carrito"
-                        element={
-                            <Carrito
-                                productosCarrito={productosCarrito}
-                                funcionBorrar={borrarProductoCarrito}
-                            />
-                        }
-                    />
-                    <Route path="/nosotros" element={<About />} />
-                    <Route path="/contacto" element={<Contacto />} />
-                </Routes>
+                <div className="content-wrapper">
+                    {" "}
+                    {/* Contenedor para el contenido de las rutas */}
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route
+                            path="/productos"
+                            element={<ProductosContainer functionCarrito={funcionCarrito} />}
+                        />
+                        <Route
+                            path="/carrito"
+                            element={
+                                <Carrito
+                                    productosCarrito={productosCarrito}
+                                    funcionBorrar={borrarProductoCarrito}
+                                />
+                            }
+                        />
+                        <Route path="/nosotros" element={<About />} />
+                        <Route path="/contacto" element={<Contacto />} />
+                    </Routes>
+                </div>
             </div>
         </Router>
     )

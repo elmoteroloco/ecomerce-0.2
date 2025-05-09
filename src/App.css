@@ -1,6 +1,22 @@
 #root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.content-wrapper {
+    flex-grow: 1; /* El área de contenido principal crece para empujar el footer (si estuviera aquí) */
+    display: flex; /* Para que el componente de la ruta (ej. Home) pueda usar flex para su altura */
+    flex-direction: column; /* Los hijos del content-wrapper se apilan verticalmente */
 }
