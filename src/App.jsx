@@ -36,8 +36,9 @@ function App() {
         const nuevoCarrito = productosCarrito.filter((p) => p.id !== id)
         setProductosCarrito(nuevoCarrito)
     }
-    console.log("Valor de import.meta.env.BASE_URL:", import.meta.env.BASE_URL)
-    const basename = import.meta.env.BASE_URL
+    // console.log("Valor de import.meta.env.BASE_URL:", import.meta.env.BASE_URL) // Comentamos esto por ahora
+    // Forzamos el basename para probar directamente
+    const basename = "/ecomerce-0.2/"
     return (
         <Router basename={basename}>
             <div>
