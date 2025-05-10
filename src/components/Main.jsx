@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react"
 
 function Main() {
     const [currentSlide, setCurrentSlide] = useState(0)
+    const [isPausedByUser, setIsPausedByUser] = useState(false)
+
     const carouselItems = [
         {
             id: 1,
             title: "Tecnología Innovadora",
             imagePlaceholder: "💻",
             description: "Gadgets y accesorios que marcan la diferencia."
-            // bgColor ya no se usará directamente para el fondo del item, se usará el de theme
         },
         {
             id: 2,
@@ -29,6 +30,7 @@ function Main() {
             description: "Regalos que inspiran calma y cuidado personal."
         }
     ]
+    const numCarouselItems = carouselItems.length
 
     const fadeInUpAnimationName = "fadeInUpEffect"
     const keyframesDefinition = `
@@ -50,11 +52,9 @@ function Main() {
         sectionAltBackground: "rgba(40, 0, 0, 0.6)",
         brandPrimaryBackground: "rgba(139, 0, 0, 0.6)",
         navButtonBackground: "rgba(70, 0, 0, 0.6)",
-
         textPrimary: "#EAEAEA",
         textSecondary: "#BDBDBD",
         textOnBrightAccent: "#1A0000",
-
         accentPrimary: "#FFA500",
         accentSecondary: "#A40000"
     }
@@ -177,12 +177,13 @@ function Main() {
         margin: "0 auto",
         overflow: "hidden",
         borderRadius: "10px",
-        border: `1px solid ${themeColorsMonochromaticDark.accentSecondary}`
+        border: `1px solid ${themeColorsMonochromaticDark.accentSecondary}`,
+        cursor: "pointer"
     }
 
     const carouselTrackStyle = {
         display: "flex",
-        transition: "transform 0.5s ease-in-out",
+        transition: "transform 4s ease-in-out", // Cambiado a 4s
         transform: `translateX(-${currentSlide * 100}%)`
     }
 
@@ -234,19 +235,47 @@ function Main() {
     const prevButtonStyle = { ...carouselNavButtonStyle, left: "15px" }
     const nextButtonStyle = { ...carouselNavButtonStyle, right: "15px" }
 
-    const handlePrev = () => {
-        setCurrentSlide((prev) => (prev === 0 ? carouselItems.length - 1 : prev - 1))
+    const handleUserInteraction = () => {
+        setIsPausedByUser(true)
     }
+
+    const handlePrev = () => {
+        handleUserInteraction()
+        setCurrentSlide((prev) => (prev === 0 ? numCarouselItems - 1 : prev - 1))
+    }
+
     const handleNext = () => {
-        setCurrentSlide((prev) => (prev === carouselItems.length - 1 ? 0 : prev + 1))
+        handleUserInteraction()
+        setCurrentSlide((prev) => (prev === numCarouselItems - 1 ? 0 : prev + 1))
+    }
+
+    const advanceSlide = () => {
+        setCurrentSlide((prev) => (prev === numCarouselItems - 1 ? 0 : prev + 1))
     }
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            handleNext()
-        }, 7000)
-        return () => clearTimeout(timer)
-    }, [currentSlide, carouselItems.length])
+        let autoAdvanceTimerId
+        if (!isPausedByUser) {
+            autoAdvanceTimerId = setTimeout(() => {
+                advanceSlide()
+            }, 2000) // Cambiado a 2 segundos
+        }
+        return () => {
+            clearTimeout(autoAdvanceTimerId)
+        }
+    }, [currentSlide, isPausedByUser, numCarouselItems])
+
+    useEffect(() => {
+        let inactivityTimerId
+        if (isPausedByUser) {
+            inactivityTimerId = setTimeout(() => {
+                setIsPausedByUser(false)
+            }, 6000)
+        }
+        return () => {
+            clearTimeout(inactivityTimerId)
+        }
+    }, [isPausedByUser])
 
     const applyHover = (e, hoverStyle) => {
         Object.assign(e.currentTarget.style, hoverStyle)
@@ -264,7 +293,7 @@ function Main() {
         borderColor: themeColorsMonochromaticDark.accentPrimary
     }
     const navButtonHover = {
-        backgroundColor: "rgba(139, 0, 0, 0.7)", // Darker red for hover
+        backgroundColor: "rgba(139, 0, 0, 0.7)",
         borderColor: themeColorsMonochromaticDark.accentPrimary
     }
 
@@ -348,10 +377,13 @@ function Main() {
 
                 <section style={carouselSectionStyle}>
                     <h2 style={h2Style}>Categorías Populares</h2>
-                    <div style={carouselContainerStyle}>
+                    <div style={carouselContainerStyle} onClick={handleUserInteraction}>
                         <button
                             style={prevButtonStyle}
-                            onClick={handlePrev}
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                handlePrev()
+                            }}
                             onMouseOver={(e) => applyHover(e, navButtonHover)}
                             onMouseOut={(e) =>
                                 removeHover(e, {
@@ -393,7 +425,10 @@ function Main() {
                         </div>
                         <button
                             style={nextButtonStyle}
-                            onClick={handleNext}
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                handleNext()
+                            }}
                             onMouseOver={(e) => applyHover(e, navButtonHover)}
                             onMouseOut={(e) =>
                                 removeHover(e, {
