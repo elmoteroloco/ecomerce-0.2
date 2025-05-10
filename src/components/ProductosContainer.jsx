@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import "../styles/Productos.css"
 import Card from "./Card"
+import LoadingBar from "./LoadingBar" // Importamos el componente LoadingBar
 
 function ProductosContainer({ functionCarrito }) {
     const [productos, setProductos] = useState([])
@@ -13,7 +14,6 @@ function ProductosContainer({ functionCarrito }) {
         fetch(JSONBIN_URL)
             .then((respuesta) => {
                 if (!respuesta.ok) {
-                    // Si 'respuesta' no es OK (ej. 404, 500) se fuerza un error para el .catch()
                     throw new Error(`Error HTTP: ${respuesta.status} ${respuesta.statusText}`)
                 }
                 return respuesta.json()
@@ -41,7 +41,7 @@ function ProductosContainer({ functionCarrito }) {
     }
 
     if (cargando) {
-        return <p>Cargando productos...</p>
+        return <LoadingBar /> // Reemplazamos el texto por el componente LoadingBar
     } else if (error) {
         return <p>{error}</p>
     } else if (productos.length === 0) {
@@ -50,7 +50,11 @@ function ProductosContainer({ functionCarrito }) {
         return (
             <div className="productos-conteiner">
                 {productos.map((producto) => (
-                    <Card producto={producto} funcionCarrito={functionEnProductos} />
+                    <Card
+                        key={producto.id}
+                        producto={producto}
+                        funcionCarrito={functionEnProductos}
+                    />
                 ))}
             </div>
         )
