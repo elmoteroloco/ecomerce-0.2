@@ -4,10 +4,11 @@ function Header() {
     const pulseAnimationName = "h1PulseEffect"
 
     const h1Style = {
-        fontSize: "12rem",
+        fontSize: "10rem",
         color: "rgba(139, 0, 0, 0.25)",
         textShadow: "0 0 15px #A40000, 0 0 19px #A40000, 0 0 15px #370000, 0 0 19px #370000",
         margin: 0,
+        marginBottom: "5px",
         letterSpacing: "18px",
         animationName: pulseAnimationName,
         animationDuration: "9s",
@@ -39,7 +40,7 @@ function Header() {
                     backgroundImage: `url(${heroImage})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    padding: "20px 10px",
+                    padding: "10px 0 10px",
                     textAlign: "center",
                     color: "orange"
                 }}>
