@@ -76,7 +76,7 @@ function Main() {
     const heroSectionStyle = {
         ...sectionBaseStyle,
         backgroundColor: themeColorsMonochromaticDark.mainBackground,
-        paddingTop: "60px",
+        paddingTop: "15px",
         paddingBottom: "60px"
     }
 
