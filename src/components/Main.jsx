@@ -1,33 +1,31 @@
 import React, { useState, useEffect } from "react"
+import Carousel from "react-bootstrap/Carousel"
 
 function Main() {
-    const [currentSlide, setCurrentSlide] = useState(0)
+    const [activeIndex, setActiveIndex] = useState(0)
+    const [direction, setDirection] = useState(1)
     const [isPausedByUser, setIsPausedByUser] = useState(false)
 
     const carouselItems = [
         {
             id: 1,
-            title: "Tecnología Innovadora",
-            imagePlaceholder: "💻",
-            description: "Gadgets y accesorios que marcan la diferencia."
+            imageUrl:
+                "https://res.cloudinary.com/dy5u2krtv/image/upload/v1746741034/crisol-1-mamboreta_cxonrb.jpg"
         },
         {
             id: 2,
-            title: "Experiencias Gourmet",
-            imagePlaceholder: "🍷",
-            description: "Delicias selectas para paladares exigentes."
+            imageUrl:
+                "https://res.cloudinary.com/dy5u2krtv/image/upload/v1746741033/crisol-2-ouroboros_jmtost.jpg"
         },
         {
             id: 3,
-            title: "Escritorio y Oficina Premium",
-            imagePlaceholder: "✒️",
-            description: "Elegancia y funcionalidad para el día a día."
+            imageUrl:
+                "https://res.cloudinary.com/dy5u2krtv/image/upload/v1746741034/crisol-3-cthulhu_wiwt7j.jpg"
         },
         {
             id: 4,
-            title: "Bienestar y Relax",
-            imagePlaceholder: "🌿",
-            description: "Regalos que inspiran calma y cuidado personal."
+            imageUrl:
+                "https://res.cloudinary.com/dy5u2krtv/image/upload/v1746741034/crisol-4-hamadrias_mp3kyk.jpg"
         }
     ]
     const numCarouselItems = carouselItems.length
@@ -44,439 +42,143 @@ function Main() {
                 transform: translateY(0);
             }
         }
-    `
 
-    const themeColorsMonochromaticDark = {
-        mainBackground: "rgba(26, 0, 0, 0.6)",
-        cardBackground: "rgba(47, 0, 0, 0.6)",
-        sectionAltBackground: "rgba(40, 0, 0, 0.6)",
-        brandPrimaryBackground: "rgba(139, 0, 0, 0.6)",
-        navButtonBackground: "rgba(70, 0, 0, 0.6)",
-        textPrimary: "#EAEAEA",
-        textSecondary: "#BDBDBD",
-        textOnBrightAccent: "#1A0000",
-        accentPrimary: "#FFA500",
-        accentSecondary: "#A40000"
-    }
+
+        .carousel-item {
+            height: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            }
+
+        /* Styles to control the fade transition speed */
+        .carousel-fade .carousel-item {
+            transition-property: opacity;
+            transform: none;
+        }
+
+        .carousel-fade .carousel-item.active,
+        .carousel-fade .carousel-item-next.carousel-item-start,
+        .carousel-fade .carousel-item-prev.carousel-item-end {
+            transition-duration: 2.5s;
+            opacity: 1;
+        }
+
+        .carousel-fade .carousel-item-next,
+        .carousel-fade .carousel-item-prev,
+        .carousel-fade .active.carousel-item-start,
+        .carousel-fade .active.carousel-item-end {
+            opacity: 0;
+            transition-duration: 2.5s;
+        }
+        `
 
     const mainStyle = {
-        fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-        color: themeColorsMonochromaticDark.textPrimary,
+        fontFamily: "var(--font-family-base)",
         lineHeight: 1.7,
-        backgroundColor: themeColorsMonochromaticDark.mainBackground
-    }
-
-    const sectionBaseStyle = {
-        padding: "50px 25px",
-        textAlign: "center",
-        opacity: 0,
-        animation: `${fadeInUpAnimationName} 0.7s ease-out forwards`
-    }
-
-    const heroSectionStyle = {
-        ...sectionBaseStyle,
-        backgroundColor: themeColorsMonochromaticDark.mainBackground,
-        paddingTop: "15px",
-        paddingBottom: "60px"
-    }
-
-    const featuresSectionStyle = {
-        ...sectionBaseStyle,
-        backgroundColor: themeColorsMonochromaticDark.mainBackground,
-        animationDelay: "0.2s"
-    }
-
-    const carouselSectionStyle = {
-        ...sectionBaseStyle,
-        backgroundColor: themeColorsMonochromaticDark.sectionAltBackground,
-        animationDelay: "0.4s"
-    }
-
-    const finalCtaSectionStyle = {
-        ...sectionBaseStyle,
-        backgroundColor: themeColorsMonochromaticDark.brandPrimaryBackground,
-        color: themeColorsMonochromaticDark.textPrimary,
-        animationDelay: "0.6s"
-    }
-
-    const h1Style = {
-        fontSize: "clamp(2.2rem, 5vw, 3rem)",
-        color: themeColorsMonochromaticDark.accentPrimary,
-        marginBottom: "20px",
-        fontWeight: 700
-    }
-
-    const h2Style = {
-        fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
-        color: themeColorsMonochromaticDark.accentPrimary,
-        marginBottom: "40px",
-        textTransform: "uppercase",
-        letterSpacing: "1px",
-        fontWeight: 600
-    }
-
-    const pStyle = {
-        fontSize: "clamp(1rem, 2.5vw, 1.15rem)",
-        maxWidth: "750px",
-        margin: "0 auto 30px auto",
-        color: themeColorsMonochromaticDark.textSecondary
-    }
-
-    const ctaButtonStyle = {
-        display: "inline-block",
-        backgroundColor: themeColorsMonochromaticDark.accentPrimary,
-        color: themeColorsMonochromaticDark.textOnBrightAccent,
-        padding: "14px 30px",
-        border: "none",
-        borderRadius: "6px",
-        fontSize: "clamp(1rem, 2.5vw, 1.1rem)",
-        cursor: "pointer",
-        textTransform: "uppercase",
-        fontWeight: "bold",
-        letterSpacing: "0.5px",
-        textDecoration: "none",
-        transition: "background-color 0.3s ease, transform 0.2s ease"
-    }
-
-    const featuresGridStyle = {
-        display: "flex",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        gap: "30px",
-        marginTop: "20px"
-    }
-
-    const featureCardStyle = {
-        backgroundColor: themeColorsMonochromaticDark.cardBackground,
-        padding: "35px",
-        borderRadius: "10px",
-        border: `1px solid ${themeColorsMonochromaticDark.accentSecondary}`,
-        width: "100%",
-        maxWidth: "320px",
-        textAlign: "center",
-        transition: "transform 0.3s ease, border-color 0.3s ease"
-    }
-
-    const featureIconStyle = {
-        fontSize: "3.5rem",
-        color: themeColorsMonochromaticDark.accentPrimary,
-        marginBottom: "20px",
-        display: "block"
-    }
-
-    const featureCardTitleStyle = {
-        fontSize: "1.6rem",
-        color: themeColorsMonochromaticDark.accentSecondary,
-        marginBottom: "15px",
-        fontWeight: 600
-    }
-
-    const carouselContainerStyle = {
-        position: "relative",
-        maxWidth: "900px",
-        margin: "0 auto",
-        overflow: "hidden",
-        borderRadius: "10px",
-        border: `1px solid ${themeColorsMonochromaticDark.accentSecondary}`,
-        cursor: "pointer"
-    }
-
-    const carouselTrackStyle = {
-        display: "flex",
-        transition: "transform 4s ease-in-out", // Cambiado a 4s
-        transform: `translateX(-${currentSlide * 100}%)`
-    }
-
-    const carouselSlideStyle = {
-        minWidth: "100%",
-        boxSizing: "border-box",
-        padding: "40px",
-        textAlign: "center"
-    }
-
-    const carouselItemContentStyle = {
-        backgroundColor: themeColorsMonochromaticDark.cardBackground,
-        color: themeColorsMonochromaticDark.textPrimary,
-        padding: "50px 30px",
-        borderRadius: "8px",
-        minHeight: "280px",
+        backgroundColor: "var(--main-bg-color)",
+        paddingTop: "0px",
+        paddingBottom: "0px",
+        minHeight: "calc(100vh - 140px)", // Asumiendo Navbar (60px) + Footer (80px)
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center"
     }
 
-    const carouselItemImagePlaceholderStyle = {
-        fontSize: "4rem",
-        marginBottom: "15px",
-        color: themeColorsMonochromaticDark.accentPrimary
+    const carouselSectionStyle = {
+        padding: "0 25px",
+        textAlign: "center",
+        opacity: 0,
+        animation: `${fadeInUpAnimationName} 0.7s ease-out forwards`,
+        height: "100%",
+        width: "100%",
+        maxWidth: "1000px",
+        margin: "0 auto",
+        animationDelay: "0.1s"
     }
 
-    const carouselNavButtonStyle = {
-        position: "absolute",
-        top: "50%",
-        transform: "translateY(-50%)",
-        backgroundColor: themeColorsMonochromaticDark.navButtonBackground,
-        color: themeColorsMonochromaticDark.textPrimary,
-        border: `1px solid ${themeColorsMonochromaticDark.accentPrimary}`,
-        padding: "12px",
-        cursor: "pointer",
-        fontSize: "1.8rem",
-        zIndex: 2,
-        borderRadius: "50%",
-        width: "45px",
-        height: "45px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        transition: "background-color 0.3s ease, border-color 0.3s ease"
+    const carouselImageStyle = {
+        height: "100%",
+        objectFit: "contain",
+        width: "auto",
+        maxWidth: "100%"
     }
 
-    const prevButtonStyle = { ...carouselNavButtonStyle, left: "15px" }
-    const nextButtonStyle = { ...carouselNavButtonStyle, right: "15px" }
-
-    const handleUserInteraction = () => {
-        setIsPausedByUser(true)
-    }
-
-    const handlePrev = () => {
-        handleUserInteraction()
-        setCurrentSlide((prev) => (prev === 0 ? numCarouselItems - 1 : prev - 1))
-    }
-
-    const handleNext = () => {
-        handleUserInteraction()
-        setCurrentSlide((prev) => (prev === numCarouselItems - 1 ? 0 : prev + 1))
-    }
-
-    const advanceSlide = () => {
-        setCurrentSlide((prev) => (prev === numCarouselItems - 1 ? 0 : prev + 1))
+    const handleSelect = (selectedIndex, event) => {
+        if (event) {
+            setIsPausedByUser(true)
+        }
+        setActiveIndex(selectedIndex)
     }
 
     useEffect(() => {
-        let autoAdvanceTimerId
-        if (!isPausedByUser) {
-            autoAdvanceTimerId = setTimeout(() => {
-                advanceSlide()
-            }, 2000) // Cambiado a 2 segundos
-        }
-        return () => {
-            clearTimeout(autoAdvanceTimerId)
-        }
-    }, [currentSlide, isPausedByUser, numCarouselItems])
+        if (isPausedByUser || numCarouselItems <= 1) return
 
-    useEffect(() => {
-        let inactivityTimerId
-        if (isPausedByUser) {
-            inactivityTimerId = setTimeout(() => {
-                setIsPausedByUser(false)
-            }, 6000)
-        }
-        return () => {
-            clearTimeout(inactivityTimerId)
-        }
-    }, [isPausedByUser])
+        const timer = setTimeout(() => {
+            setActiveIndex((prevIndex) => {
+                if (numCarouselItems <= 1) return prevIndex
 
-    const applyHover = (e, hoverStyle) => {
-        Object.assign(e.currentTarget.style, hoverStyle)
-    }
-    const removeHover = (e, originalStyle) => {
-        Object.assign(e.currentTarget.style, originalStyle)
-    }
+                let newIndex = prevIndex
+                let newDirection = direction
 
-    const ctaButtonHover = {
-        backgroundColor: themeColorsMonochromaticDark.accentSecondary,
-        transform: "scale(1.03)"
-    }
-    const featureCardHover = {
-        transform: "translateY(-8px)",
-        borderColor: themeColorsMonochromaticDark.accentPrimary
-    }
-    const navButtonHover = {
-        backgroundColor: "rgba(139, 0, 0, 0.7)",
-        borderColor: themeColorsMonochromaticDark.accentPrimary
-    }
+                if (newDirection === 1) {
+                    if (prevIndex === numCarouselItems - 1) {
+                        newDirection = -1
+                        newIndex = prevIndex - 1
+                    } else {
+                        newIndex = prevIndex + 1
+                    }
+                } else {
+                    if (prevIndex === 0) {
+                        newDirection = 1
+                        newIndex = prevIndex + 1
+                    } else {
+                        newIndex = prevIndex - 1
+                    }
+                }
+
+                if (direction !== newDirection) {
+                    setDirection(newDirection)
+                }
+                return newIndex < 0
+                    ? 0
+                    : newIndex >= numCarouselItems
+                    ? numCarouselItems - 1
+                    : newIndex
+            })
+        }, 50)
+
+        return () => clearTimeout(timer)
+    }, [activeIndex, direction, isPausedByUser, numCarouselItems])
 
     return (
         <>
             <style>{keyframesDefinition}</style>
             <main style={mainStyle}>
-                <section style={heroSectionStyle}>
-                    <h1 style={h1Style}>Regalos Corporativos que Inspiran Conexiones</h1>
-                    <p style={pStyle}>
-                        En Crisol, creamos obsequios empresariales únicos que reflejan la identidad
-                        de tu marca y fortalecen relaciones valiosas. Calidad, personalización y
-                        servicio excepcional.
-                    </p>
-                    <button
-                        style={ctaButtonStyle}
-                        onMouseOver={(e) => applyHover(e, ctaButtonHover)}
-                        onMouseOut={(e) =>
-                            removeHover(e, {
-                                backgroundColor: themeColorsMonochromaticDark.accentPrimary,
-                                transform: "scale(1)"
-                            })
-                        }>
-                        Descubre Nuestras Colecciones
-                    </button>
-                </section>
-
-                <section style={featuresSectionStyle}>
-                    <h2 style={h2Style}>Nuestros Diferenciales</h2>
-                    <div style={featuresGridStyle}>
-                        <div
-                            style={featureCardStyle}
-                            onMouseOver={(e) => applyHover(e, featureCardHover)}
-                            onMouseOut={(e) =>
-                                removeHover(e, {
-                                    transform: "translateY(0)",
-                                    borderColor: themeColorsMonochromaticDark.accentSecondary
-                                })
-                            }>
-                            <span style={featureIconStyle}>⭐</span>
-                            <h3 style={featureCardTitleStyle}>Calidad Insuperable</h3>
-                            <p style={{ color: themeColorsMonochromaticDark.textSecondary }}>
-                                Productos seleccionados por su excelencia y diseño, garantizando una
-                                impresión duradera.
-                            </p>
-                        </div>
-                        <div
-                            style={featureCardStyle}
-                            onMouseOver={(e) => applyHover(e, featureCardHover)}
-                            onMouseOut={(e) =>
-                                removeHover(e, {
-                                    transform: "translateY(0)",
-                                    borderColor: themeColorsMonochromaticDark.accentSecondary
-                                })
-                            }>
-                            <span style={featureIconStyle}>🎨</span>
-                            <h3 style={featureCardTitleStyle}>Personalización Creativa</h3>
-                            <p style={{ color: themeColorsMonochromaticDark.textSecondary }}>
-                                Adaptamos cada detalle para que tu regalo sea tan único como tu
-                                marca.
-                            </p>
-                        </div>
-                        <div
-                            style={featureCardStyle}
-                            onMouseOver={(e) => applyHover(e, featureCardHover)}
-                            onMouseOut={(e) =>
-                                removeHover(e, {
-                                    transform: "translateY(0)",
-                                    borderColor: themeColorsMonochromaticDark.accentSecondary
-                                })
-                            }>
-                            <span style={featureIconStyle}>🚚</span>
-                            <h3 style={featureCardTitleStyle}>Logística Eficiente</h3>
-                            <p style={{ color: themeColorsMonochromaticDark.textSecondary }}>
-                                Desde la selección hasta la entrega, gestionamos todo el proceso con
-                                precisión.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
                 <section style={carouselSectionStyle}>
-                    <h2 style={h2Style}>Categorías Populares</h2>
-                    <div style={carouselContainerStyle} onClick={handleUserInteraction}>
-                        <button
-                            style={prevButtonStyle}
-                            onClick={(e) => {
-                                e.stopPropagation()
-                                handlePrev()
-                            }}
-                            onMouseOver={(e) => applyHover(e, navButtonHover)}
-                            onMouseOut={(e) =>
-                                removeHover(e, {
-                                    backgroundColor:
-                                        themeColorsMonochromaticDark.navButtonBackground,
-                                    borderColor: themeColorsMonochromaticDark.accentPrimary
-                                })
-                            }>
-                            &#x276E;
-                        </button>
-                        <div style={{ overflow: "hidden" }}>
-                            <div style={carouselTrackStyle}>
-                                {carouselItems.map((item) => (
-                                    <div key={item.id} style={carouselSlideStyle}>
-                                        <div style={carouselItemContentStyle}>
-                                            <span style={carouselItemImagePlaceholderStyle}>
-                                                {item.imagePlaceholder}
-                                            </span>
-                                            <h3
-                                                style={{
-                                                    fontSize: "1.7rem",
-                                                    marginBottom: "10px",
-                                                    fontWeight: 600,
-                                                    color: themeColorsMonochromaticDark.textPrimary
-                                                }}>
-                                                {item.title}
-                                            </h3>
-                                            <p
-                                                style={{
-                                                    fontSize: "1rem",
-                                                    color: themeColorsMonochromaticDark.textPrimary
-                                                }}>
-                                                {item.description}
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <button
-                            style={nextButtonStyle}
-                            onClick={(e) => {
-                                e.stopPropagation()
-                                handleNext()
-                            }}
-                            onMouseOver={(e) => applyHover(e, navButtonHover)}
-                            onMouseOut={(e) =>
-                                removeHover(e, {
-                                    backgroundColor:
-                                        themeColorsMonochromaticDark.navButtonBackground,
-                                    borderColor: themeColorsMonochromaticDark.accentPrimary
-                                })
-                            }>
-                            &#x276F;
-                        </button>
-                    </div>
-                </section>
-
-                <section style={finalCtaSectionStyle}>
-                    <h2 style={{ ...h2Style, color: themeColorsMonochromaticDark.textPrimary }}>
-                        ¿Listo para Elevar tus Regalos Corporativos?
-                    </h2>
-                    <p
-                        style={{
-                            ...pStyle,
-                            color: themeColorsMonochromaticDark.textSecondary,
-                            marginBottom: "35px"
-                        }}>
-                        Hablemos de tus necesidades. Nuestro equipo está listo para asesorarte y
-                        crear la solución perfecta que represente a tu empresa.
-                    </p>
-                    <button
-                        style={{
-                            ...ctaButtonStyle,
-                            backgroundColor: themeColorsMonochromaticDark.accentPrimary,
-                            color: themeColorsMonochromaticDark.textOnBrightAccent
-                        }}
-                        onMouseOver={(e) =>
-                            applyHover(e, {
-                                backgroundColor: themeColorsMonochromaticDark.accentSecondary,
-                                color: themeColorsMonochromaticDark.textPrimary,
-                                transform: "scale(1.03)"
-                            })
-                        }
-                        onMouseOut={(e) =>
-                            removeHover(e, {
-                                backgroundColor: themeColorsMonochromaticDark.accentPrimary,
-                                color: themeColorsMonochromaticDark.textOnBrightAccent,
-                                transform: "scale(1)"
-                            })
-                        }>
-                        Contactar Ahora
-                    </button>
+                    {numCarouselItems > 0 && (
+                        <Carousel
+                            activeIndex={activeIndex}
+                            onSelect={handleSelect}
+                            interval={null}
+                            controls={false}
+                            indicators={false}
+                            pause={false}
+                            fade={true}
+                            className="h-100">
+                            {carouselItems.map((item) => (
+                                <Carousel.Item key={item.id}>
+                                    <img
+                                        style={carouselImageStyle}
+                                        className="d-block"
+                                        src={item.imageUrl}
+                                        alt={`Imagen de producto ${item.id}`}
+                                    />
+                                </Carousel.Item>
+                            ))}
+                        </Carousel>
+                    )}
                 </section>
             </main>
         </>

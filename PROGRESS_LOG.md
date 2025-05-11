@@ -41,8 +41,31 @@
 
 *   **Tarea P.1 (Originalmente Tarea 1.1 del Plan.md): Implementar Carrusel "Vaivén" con React-Bootstrap en `Main.jsx`**
     *   **Estado:** ⏳ En progreso
-    *   **Archivos a Modificar:** `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/layouts/Main.jsx`
+    *   **Archivos a Modificar:** `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/components/Main.jsx`
     *   **Notas:** Pendiente de aplicar el snippet para rehacer Main.jsx con el carrusel "vaivén".
 
 ### Fase 3: Personalización Avanzada y Variables Sass (Opcional)
     *   **Estado:** 📝 Pendiente
+
+---
+### 11/05/25
+
+*   **Tarea P.1 (Originalmente Tarea 1.1 del Plan.md): Implementar Carrusel "Vaivén" con React-Bootstrap en `Main.jsx`**
+    *   **Estado:** ✅ Completada (Anteriormente "En progreso")
+    *   **Archivos Modificados:** `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/components/Main.jsx`, `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/index.css`
+    *   **Detalles de Implementación:**
+        *   Se reemplazó el carrusel manual por el componente `<Carousel>` de `react-bootstrap` en `Main.jsx`
+        *   Configurada transición de tipo `fade` con duración ajustada (actualmente 2.5s)
+        *   Implementada lógica de bucle "vaivén" (1-2-3-4-3-2-1...) para la secuencia de imágenes
+        *   Pausa entre transiciones minimizada (actualmente 50ms) para un efecto de movimiento continuo
+        *   Estilos ajustados para que las imágenes del carrusel ocupen la altura visible de la pantalla (entre Navbar y Footer) sin ser recortadas verticalmente, manteniendo su relación de aspecto (`object-fit: contain`)
+        *   Integradas URLs de Cloudinary para las imágenes del carrusel
+        *   Eliminado el título "Categorías Populares" y otros elementos de texto del carrusel
+        *   Limpieza de código y estilos no utilizados en el componente
+*   **Estilización Global y Componentes:**
+    *   **`index.css`**:
+        *   Definida y consolidada la paleta de colores global utilizando variables CSS
+        *   Incluye colores con transparencia para fondos y ajustes para la transición del carrusel (ej duración del `fade`)
+    *   **`Footer.jsx`**:
+        *   Actualizados los estilos para utilizar las variables CSS de la paleta de colores global (fondo, color de texto para copyright y disclaimer, color de iconos y efecto hover)
+        *   **Archivos Modificados:** `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/components/Footer.jsx`
