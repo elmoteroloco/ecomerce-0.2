@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import "../styles/Productos.css"
 import Card from "./Card"
-import LoadingBar from "./LoadingBar" // Importamos el componente LoadingBar
+import LoadingBar from "./LoadingBar"
+import { Container, Row, Col } from "react-bootstrap"
 
 function ProductosContainer({ functionCarrito }) {
     const [productos, setProductos] = useState([])
@@ -41,22 +42,26 @@ function ProductosContainer({ functionCarrito }) {
     }
 
     if (cargando) {
-        return <LoadingBar /> // Reemplazamos el texto por el componente LoadingBar
+        return <LoadingBar />
     } else if (error) {
         return <p>{error}</p>
     } else if (productos.length === 0) {
         return <p>No hay productos disponibles en este momento.</p>
     } else {
         return (
-            <div className="productos-conteiner">
-                {productos.map((producto) => (
-                    <Card
-                        key={producto.id}
-                        producto={producto}
-                        funcionCarrito={functionEnProductos}
-                    />
-                ))}
-            </div>
+            <Container fluid className="productos-conteiner-bootstrap py-3">
+                {" "}
+                {/* Reemplazamos el div y añadimos padding vertical */}
+                <Row>
+                    {productos.map((producto) => (
+                        <Col key={producto.id} xs={12} sm={6} md={4} lg={3} className="mb-4 d-flex">
+                            {" "}
+                            {/* mb-4 para margen inferior, d-flex para que h-100 en Card funcione bien */}
+                            <Card producto={producto} funcionCarrito={functionEnProductos} />
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
         )
     }
 }

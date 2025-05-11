@@ -1,53 +1,44 @@
 import { Link } from "react-router-dom"
+import Container from "react-bootstrap/Container"
+import NavBS from "react-bootstrap/Nav" // Usamos NavBS para el componente Nav de React-Bootstrap
+import Navbar from "react-bootstrap/Navbar"
+import Badge from "react-bootstrap/Badge"
 
 function Nav({ productosCarrito }) {
     return (
-        <nav
-            style={{
-                backgroundColor: "#333",
-                color: "white",
-                paddingTop: "16px", // Igualado al nuevo paddingBottom
-                paddingRight: "10px",
-                paddingBottom: "16px", // Aumentado en 1px
-                paddingLeft: "10px",
-                width: "100%"
-            }}>
-            <ul
-                style={{
-                    listStyle: "none",
-                    display: "flex",
-                    justifyContent: "space-around",
-                    margin: 0,
-                    padding: 0
-                }}>
-                <li>
-                    <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-                        Inicio
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/productos" style={{ color: "white", textDecoration: "none" }}>
-                        Productos
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/nosotros" style={{ color: "white", textDecoration: "none" }}>
-                        Nosotros
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/contacto" style={{ color: "white", textDecoration: "none" }}>
-                        Contacto
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/carrito" style={{ color: "white", textDecoration: "none" }}>
-                        Carrito{" "}
-                        <span>{productosCarrito.length > 0 ? productosCarrito.length : ""}</span>
-                    </Link>
-                </li>
-            </ul>
-        </nav>
+        <Navbar bg="dark" variant="dark" expand="lg" style={{ width: "100%" }}>
+            <Container>
+                {/* Opcional: Puedes añadir un Brand/Logo aquí si lo deseas */}
+                {/* <Navbar.Brand as={Link} to="/">Mi Tienda</Navbar.Brand> */}
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <NavBS className="w-100 justify-content-around">
+                        <NavBS.Link as={Link} to="/">
+                            Inicio
+                        </NavBS.Link>
+                        <NavBS.Link as={Link} to="/productos">
+                            Productos
+                        </NavBS.Link>
+                        <NavBS.Link as={Link} to="/nosotros">
+                            Nosotros
+                        </NavBS.Link>
+                        <NavBS.Link as={Link} to="/contacto">
+                            Contacto
+                        </NavBS.Link>
+                    </NavBS>
+                    <NavBS>
+                        <NavBS.Link as={Link} to="/carrito">
+                            Carrito{" "}
+                            {productosCarrito.length > 0 && (
+                                <Badge bg="success" pill>
+                                    {productosCarrito.length}
+                                </Badge>
+                            )}
+                        </NavBS.Link>
+                    </NavBS>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     )
 }
 

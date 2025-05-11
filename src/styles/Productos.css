@@ -12,8 +12,6 @@
     background-color: bisque;
     border: 1px solid #ddd;
     border-radius: 8px;
-    width: 23%;
-    height: 100%;
     text-align: center;
     margin-top: 5px;
     /* Animación*/
@@ -30,5 +28,13 @@
 .producto-image {
     width: 150px;
     height: 150px;
+    border-radius: 8px;
+}
+.producto-card .card-img-top {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
     border-radius: 8px;
 }

@@ -1,6 +1,7 @@
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./custom-bootstrap.css"
 import { useState } from "react"
 import "./App.css"
-import Home from "./layouts/Home"
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
 import Nav from "./components/Nav"
 import Header from "./components/Header"
@@ -8,6 +9,7 @@ import ProductosContainer from "./components/ProductosContainer"
 import Carrito from "./components/Carrito"
 import About from "./components/About"
 import Contacto from "./components/Contacto"
+import Home from "./layouts/Home"
 
 function AppContent() {
     const location = useLocation()
@@ -38,7 +40,7 @@ function AppContent() {
 
     const isHomePage = location.pathname === "/"
 
-    const navHeight = 40
+    const navHeight = 65
     const headerOnHomeHeight = 210
 
     const fixedTopContainerStyle = {

@@ -8,7 +8,7 @@ function Header() {
         color: "rgba(139, 0, 0, 0.25)",
         textShadow: "0 0 15px #A40000, 0 0 19px #A40000, 0 0 15px #370000, 0 0 19px #370000",
         margin: 0,
-        marginBottom: "5px",
+        marginBottom: "40px",
         letterSpacing: "18px",
         animationName: pulseAnimationName,
         animationDuration: "9s",

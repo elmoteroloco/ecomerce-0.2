@@ -1,23 +1,37 @@
-# Historial de Progreso y Próximos Pasos
+## Log de Progreso del Proyecto E-commerce con Bootstrap
 
-## Objetivos Alcanzados
+### Fase 0: Configuración Inicial y Estilos Base
+*   **Tarea 0.1: Instalación de Bootstrap y React-Bootstrap**
+    *   **Estado:** ✅ Completada
+*   **Tarea 0.2: Importación Global de CSS de Bootstrap**
+    *   **Estado:** ✅ Completada
+*   **Tarea 0.3: Crear Archivo CSS para Personalizaciones de Bootstrap**
+    *   **Estado:** ✅ Completada
+*   **Tarea 0.4: Importar CSS Personalizado en la Aplicación**
+    *   **Estado:** ✅ Completada
 
-### [Fecha del último commit: YYYY-MM-DD]
-- **Referencia Plan.md:** Tarea 0.4 - Creación y Mantenimiento de Historial de Progreso (archivo `Plan.md` actualizado y `PROGRESS_LOG.md` creado e inicializado).
-- **Referencia Plan.md:** Tarea 0.4 - Creación y Mantenimiento de Historial de Progreso (archivo `Plan.md` actualizado y `PROGRESS_LOG.md` creado e inicializado).
-- **Notas:** Se establecieron los archivos de planificación (`Plan.md`) y seguimiento de progreso (`PROGRESS_LOG.md`). El archivo `Main.jsx` recibió modificaciones menores y preparatorias para la futura implementación del carrusel. Las tareas de instalación e integración de Bootstrap (0.1, 0.2, 0.3) están pendientes.
-- **Commit:** "Implementar carrusel inicial en Main, crear Plan de Acción y Log de Progreso"
+### Fase 1: Aplicación de Componentes React-Bootstrap (Navbar)
+*   **Tarea 1.1: Reemplazar Nav HTML con React-Bootstrap Navbar**
+    *   **Estado:** ✅ Completada
+*   **Tarea 1.2: Revisar y Ajustar Estilos del Navbar y Body**
+    *   **Estado:** ✅ Completada
 
----
+### Fase 2: Aplicación de Componentes React-Bootstrap (Otros Componentes)
 
-## Próximos Pasos (Al finalizar sesión del [Fecha Actual: YYYY-MM-DD])
+*   **Tarea 2.1: Reemplazar estructura de tarjetas de productos con `<Card>` y Grid de React-Bootstrap**
+    *   **Estado:** ✅ Completada
+    *   **Archivos Modificados:** `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/components/Card.jsx`, `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/components/ProductosContainer.jsx`, `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/styles/Productos.css`
+    *   **Notas:** `Card.jsx` actualizado a `<RBCard>`. `ProductosContainer.jsx` implementa `Container`, `Row`, `Col`. Estilos de imagen y tarjeta en `Productos.css` ajustados para correcta visualización y tamaño.
 
-- **Tarea Inmediata:** Tarea 0.1 (del Plan.md) - Instalación de Librerías (Bootstrap y React-Bootstrap).
-- **Siguientes Tareas (Fase 0):**
-    - Tarea 0.2: Importación Global de CSS de Bootstrap.
-    - Tarea 0.3: Creación de Archivo CSS para Overrides de Bootstrap.
-- **Objetivo General Siguiente:** Completar la Fase 0 (Preparación e Instalación de Bootstrap) para luego iniciar la Fase 1.
-- **Notas para Retomar:**
-    - Abrir la terminal en el directorio raíz del proyecto.
-    - Ejecutar `npm install bootstrap react-bootstrap`.
-    - Verificar la actualización de `package.json`.
+*   **Tarea 2.2: Refactorizar `CarritoCard.jsx` para usar componentes de React-Bootstrap**
+    *   **Estado:** ⏳ En progreso
+    *   **Archivos a Modificar:** `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/components/CarritoCard.jsx`
+    *   **Notas:** -
+
+*   **Tarea 2.3: (Opcional) Refactorizar `Carrito.jsx` para mejorar estructura con React-Bootstrap**
+    *   **Estado:** 📝 Pendiente
+    *   **Archivos a Modificar:** `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/components/Carrito.jsx`, `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/styles/Carrito.css`
+    *   **Notas:** -
+
+### Fase 3: Personalización Avanzada y Variables Sass (Opcional)
+    *   **Estado:** 📝 Pendiente
