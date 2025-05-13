@@ -1,35 +1,19 @@
 :root {
-    /* Tipografía base */
-    --font-family-base: system-ui, Avenir, Helvetica, Arial, sans-serif; /* Manteniendo tu fuente original */
+    --font-family-base: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --main-bg-color: rgba(30, 30, 36, 0.8);
+    --card-bg-color: rgba(42, 42, 50, 0.85);
+    --nav-button-bg-color: rgba(60, 60, 70, 0.7);
+    --footer-bg-color: rgba(26, 26, 31, 0.85);
+    --navbar-bg-color: rgba(20, 20, 25, 0.9);
 
-    /* Paleta de Colores Global */
-    /* Fondos con transparencia (para ver la imagen de fondo del body) */
-    --main-bg-color: rgba(
-        30,
-        30,
-        36,
-        0.8
-    ); /* Gris muy oscuro, casi negro, con matiz y transparencia */
-    --card-bg-color: rgba(42, 42, 50, 0.85); /* Para tarjetas del carrusel, con transparencia */
-    --nav-button-bg-color: rgba(60, 60, 70, 0.7); /* Para botones del carrusel */
-    --footer-bg-color: rgba(
-        26,
-        26,
-        31,
-        0.85
-    ); /* Para el footer, con transparencia (ligeramente más opaco) */
-    --navbar-bg-color: rgba(20, 20, 25, 0.9); /* Fondo para la Navbar, oscuro y con transparencia */
-
-    /* Textos y Acentos (sólidos para legibilidad) */
-    --text-primary-color: #ffdac4; /* Salmón Pálido */
-    --text-secondary-color: #d1b094; /* Salmón más oscuro/beige */
-    --text-on-accent-color: #ffffff; /* Texto blanco para usar sobre acentos oscuros si es necesario */
-    --accent-primary-color: #d95757; /* Rojo/terracota desaturado */
-    --accent-secondary-color: #a33f3f; /* Tono más oscuro del acento */
+    --text-primary-color: #ffdac4;
+    --text-secondary-color: #d1b094;
+    --text-on-accent-color: #f0f0f0;
+    --accent-primary-color: #d95757;
+    --accent-secondary-color: #a33f3f;
     --icon-color: #ffdac4;
     --icon-hover-color: #d95757;
 
-    /* Propiedades de fuente y renderizado */
     font-family: var(--font-family-base);
     line-height: 1.5;
     font-weight: 400;
@@ -41,7 +25,7 @@
 }
 body {
     margin: 0;
-    color: var(--text-primary-color); /* Color de texto principal para toda la aplicación */
+    color: var(--text-primary-color);
     background-image: url("./assets/crisol-bkgrd.jpg");
     background-size: cover;
     background-repeat: no-repeat;

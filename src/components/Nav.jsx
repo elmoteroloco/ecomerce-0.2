@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import Container from "react-bootstrap/Container"
-import NavBS from "react-bootstrap/Nav" // Usamos NavBS para el componente Nav de React-Bootstrap
+import NavBS from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import Badge from "react-bootstrap/Badge"
 
@@ -8,8 +8,6 @@ function Nav({ productosCarrito }) {
     return (
         <Navbar bg="dark" variant="dark" expand="lg" style={{ width: "100%" }}>
             <Container>
-                {/* Opcional: Puedes añadir un Brand/Logo aquí si lo deseas */}
-                {/* <Navbar.Brand as={Link} to="/">Mi Tienda</Navbar.Brand> */}
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <NavBS className="w-100 justify-content-around">

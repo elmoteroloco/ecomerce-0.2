@@ -51,7 +51,6 @@ function Main() {
             align-items: center !important;
             }
 
-        /* Styles to control the fade transition speed */
         .carousel-fade .carousel-item {
             transition-property: opacity;
             transform: none;
@@ -79,7 +78,7 @@ function Main() {
         backgroundColor: "var(--main-bg-color)",
         paddingTop: "0px",
         paddingBottom: "0px",
-        minHeight: "calc(100vh - 140px)", // Asumiendo Navbar (60px) + Footer (80px)
+        minHeight: "calc(100vh - 140px)",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

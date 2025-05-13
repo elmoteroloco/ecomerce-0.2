@@ -51,12 +51,10 @@ function ProductosContainer({ functionCarrito }) {
         return (
             <Container fluid className="productos-conteiner-bootstrap py-3">
                 {" "}
-                {/* Reemplazamos el div y añadimos padding vertical */}
                 <Row>
                     {productos.map((producto) => (
                         <Col key={producto.id} xs={12} sm={6} md={4} lg={3} className="mb-4 d-flex">
                             {" "}
-                            {/* mb-4 para margen inferior, d-flex para que h-100 en Card funcione bien */}
                             <Card producto={producto} funcionCarrito={functionEnProductos} />
                         </Col>
                     ))}
