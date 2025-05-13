@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-import "./custom-bootstrap.css"
+// import "./custom-bootstrap.css"
 import { useState } from "react"
 import "./App.css"
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
