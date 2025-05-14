@@ -16,6 +16,10 @@
     width: 100%;
 }
 
+.carrito-titulos h2 {
+    color: var(--text-on-accent-color);
+}
+
 .carrito-titulo-producto {
     width: 20%;
 }
@@ -25,14 +29,12 @@
 }
 
 .carrito-card {
-    border: solid;
-    border-color: black;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: bisque;
-    border: 1px solid #ddd;
+    background-color: var(--card-light-bg-color);
+    border: 1px solid var(--card-light-border-color);
     border-radius: 8px;
     width: 100%;
     text-align: center;
@@ -56,4 +58,22 @@
     width: 150px;
     height: 150px;
     border-radius: 8px;
+}
+
+.carrito-total-pagar {
+    color: var(--text-on-accent-color);
+    font-weight: bold;
+    display: block;
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.carrito-vacio-mensaje {
+    color: var(--text-secondary-color);
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1em;
+    margin-top: 20px;
 }

@@ -69,3 +69,25 @@
     *   **`Footer.jsx`**:
         *   Actualizados los estilos para utilizar las variables CSS de la paleta de colores global (fondo, color de texto para copyright y disclaimer, color de iconos y efecto hover)
         *   **Archivos Modificados:** `e:/_React_JS/react_proyecto_cero/ecomerce-0.2/src/components/Footer.jsx`
+
+**Optimización y Refactorización del Componente `Header.jsx`:**
+
+1.  **Optimización de Datos del Carrusel:**
+    *   Se movió la definición del array `CAROUSEL_ITEMS` (conteniendo las URLs de las imágenes y sus IDs) y la constante `NUM_CAROUSEL_ITEMS` fuera del componente funcional `Header`.
+    *   **Beneficio:** Esto evita que el array de ítems se recree en cada renderizado del componente, mejorando la eficiencia y el rendimiento, especialmente útil ya que las URLs de las imágenes son estáticas y provienen de una API dedicada.
+
+2.  **Uso de Constantes para "Valores Mágicos":**
+    *   Se identificaron y reemplazaron valores numéricos y cadenas de texto literales (conocidos como "valores mágicos") por constantes con nombres descriptivos en la parte superior del archivo.
+    *   Ejemplos incluyen:
+        *   `CAROUSEL_AUTO_PLAY_INTERVAL` (para `5000ms`)
+        *   `H1_PULSE_ANIMATION_DURATION` (para `"9s"`)
+        *   `CAROUSEL_ITEM_FADE_DURATION` (para `"2.5s"`)
+        *   `FADE_IN_UP_INITIAL_TRANSLATE_Y` (para `"25px"`)
+        *   `CAROUSEL_SECTION_HEIGHT` (para `"440px"`)
+        *   `CAROUSEL_SECTION_MAX_WIDTH` (para `"1000px"`)
+        *   `CAROUSEL_SECTION_MARGIN_TOP` (para `"-53px"`)
+    *   **Beneficio:** Esto mejora significativamente la legibilidad del código, facilita el mantenimiento y reduce el riesgo de errores al modificar estos valores, ya que solo necesitan ser cambiados en un único lugar.
+
+**Optimizaciones varias**
+
+**Commit: Depuración de estilos y archivos (parte 2) Se implementa encabezado dinámico con carrusel de imágenes y animaciones.-**

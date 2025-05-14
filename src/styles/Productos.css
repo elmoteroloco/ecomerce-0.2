@@ -9,8 +9,8 @@
 }
 
 .producto-card {
-    background-color: bisque;
-    border: 1px solid #ddd;
+    background-color: var(--card-light-bg-color);
+    border: 1px solid var(--card-light-border-color);
     border-radius: 8px;
     text-align: center;
     margin-top: 5px;

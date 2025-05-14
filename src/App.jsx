@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-// import "./custom-bootstrap.css"
 import { useState } from "react"
 import "./App.css"
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
@@ -41,7 +40,10 @@ function AppContent() {
     const isHomePage = location.pathname === "/"
 
     const navHeight = 65
-    const headerOnHomeHeight = 210
+    // titleSectionStyle altura ~142px (10 padding-top + ~112 h1 + 20 padding-bottom)
+    // carouselSectionStyle altura 440px, marginTop -53px
+    const headerOnHomeHeight = 529
+    const footerHeight = 110
 
     const fixedTopContainerStyle = {
         position: "fixed",
@@ -49,7 +51,7 @@ function AppContent() {
         left: 0,
         width: "100%",
         zIndex: 1000,
-        boxShadow: "0 3px 10px rgba(0, 0, 0, 0.12)"
+        boxShadow: "0 3px 10px  var(--shadow-color)"
     }
 
     const totalPaddingTop = isHomePage
@@ -57,7 +59,8 @@ function AppContent() {
         : `${navHeight}px`
 
     const contentWrapperStyle = {
-        paddingTop: totalPaddingTop
+        paddingTop: totalPaddingTop,
+        paddingBottom: `${footerHeight - 23}px`
     }
 
     return (

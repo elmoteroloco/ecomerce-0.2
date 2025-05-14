@@ -1,6 +1,8 @@
+import "../styles/About.css"
+
 function About() {
     return (
-        <section style={{ padding: "20px", maxWidth: "600px", margin: "auto" }}>
+        <section className="about-section">
             <h2>Sobre Nosotros</h2>
             <p>
                 Con más de tres décadas de trayectoria en el mercado, nos hemos consolidado como

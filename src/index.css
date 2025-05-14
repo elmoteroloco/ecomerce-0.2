@@ -5,6 +5,7 @@
     --nav-button-bg-color: rgba(60, 60, 70, 0.7);
     --footer-bg-color: rgba(26, 26, 31, 0.85);
     --navbar-bg-color: rgba(20, 20, 25, 0.9);
+    --carousel-bg-color: rgba(2, 12, 27, 0.3);
 
     --text-primary-color: #ffdac4;
     --text-secondary-color: #d1b094;
@@ -13,23 +14,24 @@
     --accent-secondary-color: #a33f3f;
     --icon-color: #ffdac4;
     --icon-hover-color: #d95757;
-
-    font-family: var(--font-family-base);
-    line-height: 1.5;
-    font-weight: 400;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    --card-light-bg-color: bisque;
+    --card-light-border-color: #ddd;
+    --text-on-light-card-color: #333333;
 }
 body {
     margin: 0;
+    font-family: var(--font-family-base);
+    line-height: 1.5;
+    font-weight: 400;
     color: var(--text-primary-color);
-    background-image: url("./assets/crisol-bkgrd.jpg");
+    background-image: url("./assets/fireChacku.gif");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     min-height: 100vh;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

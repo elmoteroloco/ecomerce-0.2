@@ -1,0 +1,15 @@
+.contacto-section {
+    padding: 25px;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: var(--card-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    text-align: center;
+}
+
+.contacto-section p {
+    color: var(--text-primary-color);
+    font-size: 1.2em;
+    line-height: 1.8;
+}

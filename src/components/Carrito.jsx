@@ -31,7 +31,7 @@ export default function Carrito({ productosCarrito, funcionBorrar }) {
                     />
                 ))
             ) : (
-                <p>Carrito vacío</p>
+                <p className="carrito-vacio-mensaje">Carrito vacío</p>
             )}
             {productosCarrito.length > 0 ? (
                 <span className="carrito-total-pagar">Total a pagar: {total.toFixed(2)} $</span>
