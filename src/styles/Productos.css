@@ -38,3 +38,20 @@
     margin: 0 auto;
     border-radius: 8px;
 }
+
+.btn-agregar {
+    background-color: var(--accent-primary-color);
+    color: var(--text-on-accent-color);
+    border-color: var(--text-on-accent-color);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.btn-agregar:hover {
+    background-color: var(--accent-secondary-color);
+    border-color: var(--accent-secondary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}

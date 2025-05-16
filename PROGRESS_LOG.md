@@ -91,3 +91,5 @@
 **Optimizaciones varias**
 
 **Commit: Depuración de estilos y archivos (parte 2) Se implementa encabezado dinámico con carrusel de imágenes y animaciones.-**
+
+**Se realiza el deploy en GitHub-pages desde terminal**

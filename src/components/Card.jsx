@@ -43,7 +43,7 @@ function Card({ producto, funcionCarrito }) {
                 {" "}
                 <RBCard.Title>{producto.nombre}</RBCard.Title>
                 <RBCard.Text>{producto.descripcion}</RBCard.Text>
-                <RBCard.Text>Precio: {producto.precio.toFixed(2)} $</RBCard.Text>
+                <RBCard.Text>$ {producto.precio}</RBCard.Text>
                 <div className="mt-auto">
                     {" "}
                     {/* mt-auto empuja el contador y el botón abajo */}
@@ -56,7 +56,10 @@ function Card({ producto, funcionCarrito }) {
                             +
                         </Button>
                     </div>
-                    <Button variant="primary" onClick={agregarAlCarrito} className="w-100">
+                    <Button
+                        variant="primary"
+                        onClick={agregarAlCarrito}
+                        className="w-100 btn-agregar">
                         Agregar al carrito
                     </Button>
                 </div>

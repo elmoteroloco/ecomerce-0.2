@@ -20,10 +20,10 @@ function CarritoCard({ producto, funcionDisparadora }) {
             <img className="carrito-image" src={producto.imagen}></img>
             <span style={{ color: "black" }}>{producto.cantidad}</span>
             <div className="carrito-unitario">
-                <span style={{ color: "black" }}>{producto.precio.toFixed(2)} $</span>
+                <span style={{ color: "black" }}>$ {producto.precio}</span>
             </div>
             <div className="carrito-sub">
-                <span style={{ color: "black" }}>{subtotal.toFixed(2)} $</span>
+                <span style={{ color: "black" }}>$ {subtotal}</span>
             </div>
             <button
                 className="boton-carrito"
