@@ -55,3 +55,16 @@
     border-color: var(--accent-secondary-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+.btn-agregar:focus {
+    outline: none;
+    border-color: var(--accent-secondary-color);
+    box-shadow: 0 0 0 0.2rem rgba(217, 87, 87, 0.5), 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-agregar:active {
+    background-color: var(--accent-secondary-color) !important;
+    border-color: var(--accent-secondary-color) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-image: none !important;
+}
