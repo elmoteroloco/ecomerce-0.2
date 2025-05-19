@@ -17,3 +17,12 @@
     display: flex;
     flex-direction: column;
 }
+
+.navbar-collapse {
+    z-index: 1200 !important;
+    position: relative;
+}
+
+.offcanvas {
+    z-index: 1200 !important;
+}
