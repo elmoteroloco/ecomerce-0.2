@@ -18,11 +18,8 @@
     flex-direction: column;
 }
 
-.navbar-collapse {
-    z-index: 1200 !important;
-    position: relative;
-}
-
 .offcanvas {
-    z-index: 1200 !important;
+    z-index: 2001 !important;
+    background: #222 !important;
+    color: #fff;
 }
