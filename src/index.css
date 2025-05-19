@@ -16,7 +16,7 @@
     --icon-hover-color: #d95757;
     --card-light-bg-color: bisque;
     --card-light-border-color: #ddd;
-    --text-on-light-card-color: #333333;
+    --text-on-light-card-color: #181818;
 }
 body {
     margin: 0;
@@ -49,4 +49,10 @@ body {
 .btn-login-estilo:hover {
     background-color: color-mix(in srgb, #2a0000 85%, transparent) !important;
     color: #ffd700 !important;
+}
+.login-title {
+    color: #333333 !important;
+}
+h2 {
+    color: var(--text-on-light-card-color) !important;
 }

@@ -15,7 +15,7 @@ function Login({ usuarioLogueado, adminLogueado, manejarLoginUsuario, manejarLog
 
     return (
         <div style={{ padding: "2rem", textAlign: "center" }}>
-            <h2>Iniciar/Cerrar Sesión</h2>
+            <h2 className="login-title">Iniciar/Cerrar Sesión</h2>
             <button
                 className="btn-login-estilo"
                 onClick={handleUserLogin}
