@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useState } from "react"
 import "./App.css"
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 import Nav from "./components/Nav"
 import Header from "./components/Header"
 import ProductosContainer from "./components/ProductosContainer"
@@ -9,10 +9,24 @@ import Carrito from "./components/Carrito"
 import About from "./components/About"
 import Contacto from "./components/Contacto"
 import Home from "./layouts/Home"
+import ProductoDetalle from "./components/ProductoDetalle"
+import Login from "./components/Login"
+import Admin from "./components/Admin"
 
 function AppContent() {
-    const location = useLocation()
     const [productosCarrito, setProductosCarrito] = useState([])
+    const [usuarioLogueado, setUsuarioLogueado] = useState(false)
+    const [adminLogueado, setAdminLogueado] = useState(false)
+
+    function manejarLoginUsuario() {
+        setUsuarioLogueado(!usuarioLogueado)
+        if (adminLogueado) setAdminLogueado(false)
+    }
+
+    function manejarLoginAdmin() {
+        setAdminLogueado(!adminLogueado)
+        if (usuarioLogueado) setUsuarioLogueado(false)
+    }
 
     function funcionCarrito(producto) {
         const existe = productosCarrito.find((p) => p.id === producto.id)
@@ -37,11 +51,9 @@ function AppContent() {
         setProductosCarrito(nuevoCarrito)
     }
 
-    const isHomePage = location.pathname === "/"
+    const isHomePage = false // O manejarlo de otra forma si es necesario
 
     const navHeight = 65
-    // titleSectionStyle altura ~142px (10 padding-top + ~112 h1 + 20 padding-bottom)
-    // carouselSectionStyle altura 440px, marginTop -53px
     const headerOnHomeHeight = 529
     const footerHeight = 110
 
@@ -66,24 +78,56 @@ function AppContent() {
     return (
         <div className="app-container">
             <div style={fixedTopContainerStyle}>
-                <Nav productosCarrito={productosCarrito} />
+                <Nav
+                    productosCarrito={productosCarrito}
+                    usuarioLogueado={usuarioLogueado}
+                    adminLogueado={adminLogueado}
+                />
                 {isHomePage && <Header />}
             </div>
             <div className="content-wrapper" style={contentWrapperStyle}>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route
+                        path="/login"
+                        element={
+                            <Login
+                                usuarioLogueado={usuarioLogueado}
+                                adminLogueado={adminLogueado}
+                                manejarLoginUsuario={manejarLoginUsuario}
+                                manejarLoginAdmin={manejarLoginAdmin}
+                            />
+                        }
+                    />
+                    <Route
                         path="/productos"
                         element={<ProductosContainer functionCarrito={funcionCarrito} />}
                     />
                     <Route
-                        path="/carrito"
+                        path="/productos/:id"
                         element={
-                            <Carrito
-                                productosCarrito={productosCarrito}
-                                funcionBorrar={borrarProductoCarrito}
+                            <ProductoDetalle
+                                funcionCarrito={funcionCarrito}
+                                usuarioLogueado={usuarioLogueado}
                             />
                         }
+                    />
+                    <Route
+                        path="/carrito"
+                        element={
+                            usuarioLogueado ? (
+                                <Carrito
+                                    productosCarrito={productosCarrito}
+                                    funcionBorrar={borrarProductoCarrito}
+                                />
+                            ) : (
+                                <Navigate to="/login" replace />
+                            )
+                        }
+                    />
+                    <Route
+                        path="/admin"
+                        element={adminLogueado ? <Admin /> : <Navigate to="/login" replace />}
                     />
                     <Route path="/nosotros" element={<About />} />
                     <Route path="/contacto" element={<Contacto />} />
@@ -94,7 +138,6 @@ function AppContent() {
 }
 
 function App() {
-    //basename: ruta en GitHub-pages para los Link
     const basename = "/ecomerce-0.2/"
     return (
         <Router basename={basename}>

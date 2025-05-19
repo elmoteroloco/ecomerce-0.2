@@ -4,7 +4,7 @@ import Card from "./Card"
 import LoadingBar from "./LoadingBar"
 import { Container, Row, Col } from "react-bootstrap"
 
-function ProductosContainer({ functionCarrito }) {
+function ProductosContainer() {
     const [productos, setProductos] = useState([])
     const [cargando, setCargando] = useState(true)
     const [error, setError] = useState(null)
@@ -37,10 +37,6 @@ function ProductosContainer({ functionCarrito }) {
             })
     }, [])
 
-    function functionEnProductos(producto) {
-        functionCarrito(producto)
-    }
-
     if (cargando) {
         return <LoadingBar />
     } else if (error) {
@@ -50,12 +46,10 @@ function ProductosContainer({ functionCarrito }) {
     } else {
         return (
             <Container fluid className="productos-conteiner-bootstrap py-3">
-                {" "}
                 <Row>
                     {productos.map((producto) => (
                         <Col key={producto.id} xs={12} sm={6} md={4} lg={3} className="mb-4 d-flex">
-                            {" "}
-                            <Card producto={producto} funcionCarrito={functionEnProductos} />
+                            <Card producto={producto} />
                         </Col>
                     ))}
                 </Row>

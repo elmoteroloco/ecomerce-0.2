@@ -4,7 +4,7 @@ import NavBS from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import Badge from "react-bootstrap/Badge"
 
-function Nav({ productosCarrito }) {
+function Nav({ productosCarrito, usuarioLogueado, adminLogueado }) {
     return (
         <Navbar bg="dark" variant="dark" expand="lg" style={{ width: "100%" }}>
             <Container>
@@ -23,8 +23,6 @@ function Nav({ productosCarrito }) {
                         <NavBS.Link as={Link} to="/contacto">
                             Contacto
                         </NavBS.Link>
-                    </NavBS>
-                    <NavBS>
                         <NavBS.Link as={Link} to="/carrito">
                             Carrito{" "}
                             {productosCarrito.length > 0 && (
@@ -33,7 +31,23 @@ function Nav({ productosCarrito }) {
                                 </Badge>
                             )}
                         </NavBS.Link>
+                        <NavBS.Link as={Link} to="/login">
+                            {usuarioLogueado
+                                ? "Cerrar sesión Usuario"
+                                : !usuarioLogueado && !adminLogueado
+                                ? "Login"
+                                : null}
+                        </NavBS.Link>
+                        {adminLogueado && (
+                            <NavBS.Link as={Link} to="/login">
+                                Cerrar sesión Admin
+                            </NavBS.Link>
+                        )}
                     </NavBS>
+                    <span style={{ color: "white", marginLeft: "1rem" }}>
+                        {usuarioLogueado && "Usuario logueado"}
+                        {adminLogueado && "Admin logueado"}
+                    </span>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

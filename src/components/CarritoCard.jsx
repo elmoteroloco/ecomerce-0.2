@@ -8,7 +8,7 @@ function CarritoCard({ producto, funcionDisparadora }) {
     }
 
     return (
-        <div className="carrito-card">
+        <div className="carrito-card tarjeta-opaca">
             <h3 className="carrito-producto" style={{ color: "black" }}>
                 {producto.nombre}
             </h3>

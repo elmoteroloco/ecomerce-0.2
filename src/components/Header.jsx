@@ -25,8 +25,7 @@ const CAROUSEL_ITEMS = [
     }
 ]
 const NUM_CAROUSEL_ITEMS = CAROUSEL_ITEMS.length
-// Constantes para valores mágicos
-const CAROUSEL_AUTO_PLAY_INTERVAL = 5000 // ms
+const CAROUSEL_AUTO_PLAY_INTERVAL = 3333
 const H1_PULSE_ANIMATION_DURATION = "9s"
 const CAROUSEL_ITEM_FADE_DURATION = "2.5s"
 const FADE_IN_UP_INITIAL_TRANSLATE_Y = "25px"
@@ -39,73 +38,45 @@ function Header() {
     const [direction, setDirection] = useState(1)
     const [isPausedByUser, setIsPausedByUser] = useState(false)
 
-    const pulseAnimationName = "h1PulseEffect"
-
-    const h1Style = {
-        fontSize: "7rem",
-        color: "rgba(139, 0, 0, 0.25)",
-        textShadow: "0 0 15px #A40000, 0 0 19px #A40000, 0 0 15px #370000, 0 0 19px #370000",
-        margin: 0,
-        //marginBottom: "15px",
-        letterSpacing: "18px",
-        animationName: pulseAnimationName,
-        animationDuration: H1_PULSE_ANIMATION_DURATION,
-        animationIterationCount: "infinite",
-        animationTimingFunction: "ease-in-out",
-        lineHeight: "1"
-    }
-
-    const fadeInUpAnimationName = "fadeInUpEffect"
     const keyframesDefinition = `
-        @keyframes ${pulseAnimationName} {
-            0% {
-                transform: scale(1)
-            }
-            50% {
-                transform: scale(1.03)
-            }
-            100% {
-                transform: scale(1)
-            }
+        @keyframes h1PulseEffect {
+            0% { transform: scale(1) }
+            50% { transform: scale(1.03) }
+            100% { transform: scale(1) }
         }
-
-        @keyframes ${fadeInUpAnimationName} {
-            from {
-                opacity: 0;
-                transform: translateY(${FADE_IN_UP_INITIAL_TRANSLATE_Y});
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeInUpEffect {
+            from { opacity: 0; transform: translateY(${FADE_IN_UP_INITIAL_TRANSLATE_Y}); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        /* Estilos para el Carousel de Bootstrap adaptados */
-        .carousel, .carousel-inner { /* Aseguramos que el .carousel y .carousel-inner también tomen el 100% de la altura */
+        .carousel, .carousel-inner {
             height: 100% !important;
-            background-color: transparent !important; /* Hacemos el fondo del inner transparente también */
+            background-color: transparent !important;
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
         }
-
         .carousel-item {
-            height: 100% !important; /* Asegurar altura completa para el item */
+            height: 100% !important;
             display: flex !important;
             justify-content: center !important;
             align-items: center !important;
             position: relative !important;
         }
-
+        .carousel-item img, .carousel-inner img {
+            max-width: 100vw !important;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
         .carousel-fade .carousel-item {
             transition-property: opacity;
             transform: none;
         }
-
         .carousel-fade .carousel-item.active,
         .carousel-fade .carousel-item-next.carousel-item-start,
         .carousel-fade .carousel-item-prev.carousel-item-end {
             transition-duration: ${CAROUSEL_ITEM_FADE_DURATION};
             opacity: 1;
         }
-
         .carousel-fade .carousel-item-next,
         .carousel-fade .carousel-item-prev,
         .carousel-fade .active.carousel-item-start,
@@ -113,23 +84,19 @@ function Header() {
             opacity: 0;
             transition-duration: ${CAROUSEL_ITEM_FADE_DURATION};
         }
-        `
+    `
 
-    const titleSectionStyle = {
-        // Estilo para el contenedor principal del header
-        backgroundColor: "var(--accent-secondary-color)",
-        backgroundImage: `url(${heroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        padding: "10px 0 20px",
-        textAlign: "center",
-        color: "var(--text-on-accent-color)",
-        position: "relative",
-        zIndex: 2
+    const h1Style = {
+        fontSize: "clamp(2.5rem, 8vw, 7rem)",
+        color: "rgba(139, 0, 0, 0.25)",
+        textShadow: "0 0 15px #A40000, 0 0 19px #A40000, 0 0 15px #370000, 0 0 19px #370000",
+        margin: 0,
+        letterSpacing: "0.15em",
+        animation: `h1PulseEffect ${H1_PULSE_ANIMATION_DURATION} infinite ease-in-out`,
+        lineHeight: "1"
     }
 
     const carouselSectionStyle = {
-        // Estilos para la sección del carrusel
         padding: "0 25px 10px",
         backgroundColor: "var(--carousel-bg-color)",
         textAlign: "center",
@@ -150,74 +117,75 @@ function Header() {
     }
 
     const handleSelect = (selectedIndex, event) => {
-        if (event) {
-            setIsPausedByUser(true)
-        }
+        if (event) setIsPausedByUser(true)
         setActiveIndex(selectedIndex)
     }
 
     useEffect(() => {
         if (isPausedByUser || NUM_CAROUSEL_ITEMS <= 1) return
-
         const timer = setTimeout(() => {
-            setActiveIndex((prevIndex) => {
-                if (NUM_CAROUSEL_ITEMS <= 1) return prevIndex
-
+            setActiveIndex(prevIndex => {
                 let newIndex = prevIndex
                 let newDirection = direction
                 if (newDirection === 1) {
-                    if (prevIndex === NUM_CAROUSEL_ITEMS - 1) {
-                        newDirection = -1
-                        newIndex = prevIndex - 1
-                    } else {
-                        newIndex = prevIndex + 1
-                    }
+                    newIndex = prevIndex === NUM_CAROUSEL_ITEMS - 1 ? prevIndex - 1 : prevIndex + 1
+                    if (prevIndex === NUM_CAROUSEL_ITEMS - 1) newDirection = -1
                 } else {
-                    if (prevIndex === 0) {
-                        newDirection = 1
-                        newIndex = prevIndex + 1
-                    } else {
-                        newIndex = prevIndex - 1
-                    }
+                    newIndex = prevIndex === 0 ? prevIndex + 1 : prevIndex - 1
+                    if (prevIndex === 0) newDirection = 1
                 }
-
-                if (direction !== newDirection) {
-                    setDirection(newDirection)
-                }
-                return newIndex < 0
-                    ? 0
-                    : newIndex >= NUM_CAROUSEL_ITEMS
-                    ? NUM_CAROUSEL_ITEMS - 1
-                    : newIndex
+                if (direction !== newDirection) setDirection(newDirection)
+                return Math.max(0, Math.min(newIndex, NUM_CAROUSEL_ITEMS - 1))
             })
         }, CAROUSEL_AUTO_PLAY_INTERVAL)
-
         return () => clearTimeout(timer)
     }, [activeIndex, direction, isPausedByUser])
+
     return (
         <>
             <style>{keyframesDefinition}</style>
-            <header style={{ textAlign: "center", position: "relative" }}>
-                <div style={titleSectionStyle}>
-                    <h1 style={h1Style}>Crisol</h1>
-                </div>
+            <div
+                style={{
+                    position: "fixed",
+                    top: 65,
+                    left: 0,
+                    width: "100%",
+                    zIndex: 1100,
+                    backgroundColor: "var(--accent-secondary-color)",
+                    backgroundImage: `url(${heroImage})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    color: "var(--text-on-accent-color)",
+                    textAlign: "center"
+                }}>
+                <h1 style={h1Style}>Crisol</h1>
+            </div>
+            <div
+                style={{
+                    marginTop: 120,
+                    zIndex: 1,
+                    position: "relative",
+                    scrollBehavior: "smooth",
+                    WebkitOverflowScrolling: "touch",
+                    transition: "margin-top 0.8s cubic-bezier(0.4,0,0.2,1)"
+                }}>
                 <section style={carouselSectionStyle}>
                     {NUM_CAROUSEL_ITEMS > 0 && (
                         <Carousel
                             activeIndex={activeIndex}
                             onSelect={handleSelect}
-                            interval={null} // Desactivar intervalo automático de Bootstrap, lo manejamos nosotros
-                            controls={false} // Sin controles de prev/next
-                            indicators={false} // Sin indicadores de slides
-                            pause={false} // No pausar en hover (ya lo manejamos con isPausedByUser)
+                            interval={null}
+                            controls={false}
+                            indicators={false}
+                            pause={false}
                             fade={true}
-                            className="h-100" // Para que el Carousel ocupe la altura de carouselSectionStyle
+                            className="h-100"
                         >
-                            {CAROUSEL_ITEMS.map((item) => (
+                            {CAROUSEL_ITEMS.map(item => (
                                 <Carousel.Item key={item.id}>
                                     <img
                                         style={carouselImageStyle}
-                                        className="d-block" // Bootstrap class para display block
+                                        className="d-block"
                                         src={item.imageUrl}
                                         alt={`Imagen de producto ${item.id}`}
                                     />
@@ -226,7 +194,7 @@ function Header() {
                         </Carousel>
                     )}
                 </section>
-            </header>
+            </div>
         </>
     )
 }
