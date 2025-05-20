@@ -13,13 +13,22 @@ export default function Carrito({ productosCarrito, funcionBorrar }) {
 
     return (
         <div className="carrito-conteiner">
-            <div className="carrito-titulos">
+            <div
+                className="carrito-titulos"
+                style={{
+                    background: "#ffdac4",
+                    color: "#181818",
+                    borderRadius: 8,
+                    padding: "0",
+                    marginBottom: 8,
+                    fontWeight: "bold"
+                }}>
                 <h2 className="carrito-titulo-producto"> Producto </h2>
                 <h2 className="carrito-titulo-descripcion">Descripción</h2>
                 <h2> </h2>
-                <h2> Cantidad </h2>
-                <h2> Precio unitario </h2>
-                <h2> Sub total </h2>
+                <h2> Cantidad</h2>
+                <h2> Precio</h2>
+                <h2> Sub total</h2>
                 <h2> </h2>
             </div>
             {productosCarrito.length > 0 ? (

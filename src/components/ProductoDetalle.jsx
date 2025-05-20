@@ -11,13 +11,16 @@ function ProductoDetalle({ funcionCarrito, usuarioLogueado }) {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        fetch("https://api.jsonbin.io/v3/b/681d10b68561e97a50101e33/latest")
-            .then((res) => res.json())
-            .then((datos) => {
-                let productos = datos && datos.record ? datos.record : []
-                const productoEncontrado = productos.find((item) => item.id === id)
-                if (productoEncontrado) {
-                    setProducto(productoEncontrado)
+        fetch(`https://682bcefcd29df7a95be47f49.mockapi.io/producto/${id}`)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`Error HTTP: ${res.status} ${res.statusText}`)
+                }
+                return res.json()
+            })
+            .then((producto) => {
+                if (producto && producto.id) {
+                    setProducto(producto)
                 } else {
                     setError("Producto no encontrado.")
                 }
@@ -32,7 +35,7 @@ function ProductoDetalle({ funcionCarrito, usuarioLogueado }) {
     function agregarAlCarrito() {
         if (!usuarioLogueado) {
             dispararSweetBasico(
-                "Debes iniciar sesión",
+                "Inicia sesión",
                 "Por favor, inicia sesión para agregar productos al carrito.",
                 "warning",
                 "Ir a login"
@@ -41,7 +44,7 @@ function ProductoDetalle({ funcionCarrito, usuarioLogueado }) {
         }
         if (cantidad < 1) return
         dispararSweetBasico(
-            "Producto Agregado",
+            "Producto agregado",
             "El producto fue agregado al carrito con éxito",
             "success",
             "Cerrar"
@@ -141,7 +144,8 @@ function ProductoDetalle({ funcionCarrito, usuarioLogueado }) {
                         </button>
                         {!usuarioLogueado && (
                             <p style={{ color: "red", marginTop: "1rem" }}>
-                                Debes iniciar sesión para agregar productos al carrito.
+                                ATENCIÓN: <br />
+                                Iniciar sesión como usuario para agregar productos.
                             </p>
                         )}
                     </div>

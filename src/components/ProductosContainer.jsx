@@ -9,10 +9,10 @@ function ProductosContainer() {
     const [cargando, setCargando] = useState(true)
     const [error, setError] = useState(null)
 
-    const JSONBIN_URL = "https://api.jsonbin.io/v3/b/681d10b68561e97a50101e33/latest"
+    const API_URL = "https://682bcefcd29df7a95be47f49.mockapi.io/producto"
 
     useEffect(() => {
-        fetch(JSONBIN_URL)
+        fetch(API_URL)
             .then((respuesta) => {
                 if (!respuesta.ok) {
                     throw new Error(`Error HTTP: ${respuesta.status} ${respuesta.statusText}`)
@@ -20,15 +20,7 @@ function ProductosContainer() {
                 return respuesta.json()
             })
             .then((datos) => {
-                if (datos && datos.record) {
-                    const productosTransformados = datos.record.map((prod) => ({
-                        ...prod,
-                        precio: parseFloat(prod.precio) || 0
-                    }))
-                    setProductos(productosTransformados)
-                } else {
-                    setProductos(datos && Array.isArray(datos) ? datos : [])
-                }
+                setProductos(Array.isArray(datos) ? datos : [])
                 setCargando(false)
             })
             .catch((err) => {

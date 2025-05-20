@@ -5,12 +5,12 @@ function Login({ usuarioLogueado, adminLogueado, manejarLoginUsuario, manejarLog
 
     function handleUserLogin() {
         manejarLoginUsuario()
-        navigate("/")
+        navigate("/productos")
     }
 
     function handleAdminLogin() {
         manejarLoginAdmin()
-        navigate("/")
+        navigate("/admin")
     }
 
     return (

@@ -12,6 +12,7 @@ import Home from "./layouts/Home"
 import ProductoDetalle from "./components/ProductoDetalle"
 import Login from "./components/Login"
 import Admin from "./components/Admin"
+import { dispararSweetBasico } from "./assets/SweetAlert"
 
 function AppContent() {
     const [productosCarrito, setProductosCarrito] = useState([])
@@ -19,6 +20,21 @@ function AppContent() {
     const [adminLogueado, setAdminLogueado] = useState(false)
 
     function manejarLoginUsuario() {
+        if (!usuarioLogueado) {
+            dispararSweetBasico(
+                "Bienvenido",
+                "Sesión de usuario iniciada correctamente",
+                "success",
+                "Aceptar"
+            )
+        } else {
+            dispararSweetBasico(
+                "Sesión cerrada",
+                "Has cerrado sesión de usuario",
+                "info",
+                "Aceptar"
+            )
+        }
         setUsuarioLogueado(!usuarioLogueado)
         if (adminLogueado) setAdminLogueado(false)
     }
@@ -127,7 +143,13 @@ function AppContent() {
                     />
                     <Route
                         path="/admin"
-                        element={adminLogueado ? <Admin /> : <Navigate to="/login" replace />}
+                        element={
+                            adminLogueado ? (
+                                <Admin manejarLoginAdmin={manejarLoginAdmin} />
+                            ) : (
+                                <Navigate to="/login" replace />
+                            )
+                        }
                     />
                     <Route path="/nosotros" element={<About />} />
                     <Route path="/contacto" element={<Contacto />} />
