@@ -136,18 +136,18 @@ function ProductoDetalle({ funcionCarrito, usuarioLogueado }) {
                                 +
                             </button>
                         </div>
-                        <button
-                            className="btn btn-primary btn-agregar w-100"
-                            onClick={agregarAlCarrito}
-                            disabled={!usuarioLogueado}>
-                            Agregar al carrito
-                        </button>
                         {!usuarioLogueado && (
                             <p style={{ color: "red", marginTop: "1rem" }}>
                                 ATENCIÓN: <br />
                                 Iniciar sesión como usuario para agregar productos.
                             </p>
                         )}
+                        <button
+                            className="btn btn-primary btn-agregar w-100"
+                            onClick={agregarAlCarrito}
+                            disabled={!usuarioLogueado}>
+                            Agregar al carrito
+                        </button>
                     </div>
                 </div>
             </div>

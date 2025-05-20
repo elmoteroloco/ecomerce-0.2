@@ -30,7 +30,7 @@ function AppContent() {
         } else {
             dispararSweetBasico(
                 "Sesión cerrada",
-                "Has cerrado sesión de usuario",
+                "Cerraste tu sesión de usuario",
                 "info",
                 "Aceptar"
             )
