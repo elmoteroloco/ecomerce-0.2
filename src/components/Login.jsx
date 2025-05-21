@@ -17,13 +17,13 @@ function Login({ usuarioLogueado, adminLogueado, manejarLoginUsuario, manejarLog
         <div style={{ padding: "2rem", textAlign: "center" }}>
             <h2 className="login-title">Iniciar/Cerrar Sesión</h2>
             <button
-                className="btn-login-estilo"
+                className="btn-login-estilo btn-efecto"
                 onClick={handleUserLogin}
                 style={{ margin: "1rem" }}>
                 {usuarioLogueado ? "Cerrar sesión Usuario" : "Iniciar sesión Usuario"}
             </button>
             <button
-                className="btn-login-estilo"
+                className="btn-login-estilo btn-efecto"
                 onClick={handleAdminLogin}
                 style={{ margin: "1rem" }}>
                 {adminLogueado ? "Cerrar sesión Admin" : "Iniciar sesión Admin"}

@@ -56,3 +56,17 @@ body {
 h2 {
     color: var(--text-on-light-card-color) !important;
 }
+.navbar .nav-link:active {
+    background-color: var(--accent-secondary-color) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    transform: scale(0.7);
+    transition: all 0.5s;
+}
+.btn-efecto:active {
+    background-color: var(--accent-secondary-color) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    transform: scale(0.96);
+    transition: all 0.1s;
+}

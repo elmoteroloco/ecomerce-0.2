@@ -20,7 +20,7 @@ function Card({ producto }) {
                 <Link
                     to={`/productos/${producto.id}`}
                     style={{ textDecoration: "none", width: "100%" }}>
-                    <Button variant="primary" className="w-100 btn-agregar">
+                    <Button variant="primary" className="w-100 btn-agregar btn-efecto">
                         Ver detalles del producto
                     </Button>
                 </Link>

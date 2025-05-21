@@ -26,7 +26,7 @@ function CarritoCard({ producto, funcionDisparadora }) {
                 <span style={{ color: "black" }}>$ {subtotal}</span>
             </div>
             <button
-                className="boton-carrito"
+                className="boton-carrito btn-efecto"
                 onClick={borrarDelCarrito}
                 style={{ backgroundColor: "firebrick", color: "black", fontWeight: "bolder" }}>
                 X

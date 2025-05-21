@@ -121,7 +121,7 @@ function ProductoDetalle({ funcionCarrito, usuarioLogueado }) {
                         </p>
                         <div className="d-flex justify-content-center align-items-center mb-3">
                             <button
-                                className="btn btn-outline-secondary"
+                                className="btn btn-outline-secondary btn-efecto"
                                 onClick={restarContador}
                                 style={{ fontSize: "1.2rem" }}>
                                 -
@@ -130,7 +130,7 @@ function ProductoDetalle({ funcionCarrito, usuarioLogueado }) {
                                 {cantidad}
                             </span>
                             <button
-                                className="btn btn-outline-secondary"
+                                className="btn btn-outline-secondary btn-efecto"
                                 onClick={sumarContador}
                                 style={{ fontSize: "1.2rem" }}>
                                 +
@@ -143,7 +143,7 @@ function ProductoDetalle({ funcionCarrito, usuarioLogueado }) {
                             </p>
                         )}
                         <button
-                            className="btn btn-primary btn-agregar w-100"
+                            className="btn btn-primary btn-agregar w-100 btn-efecto"
                             onClick={agregarAlCarrito}
                             disabled={!usuarioLogueado}>
                             Agregar al carrito
