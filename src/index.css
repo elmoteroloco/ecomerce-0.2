@@ -70,3 +70,27 @@ h2 {
     transform: scale(0.96);
     transition: all 0.1s;
 }
+.offcanvas.offcanvas-end {
+    max-width: 33.333vw !important;
+}
+
+/* SOLO ajustar justificación y ancho, sin forzar display ni width globales */
+
+/* Navbar principal: solo desktop */
+@media (min-width: 992px) {
+    .navbar .navbar-nav {
+        justify-content: space-evenly;
+    }
+}
+
+/* Offcanvas: solo mobile */
+@media (max-width: 991px) {
+    .offcanvas.offcanvas-end.show {
+        max-width: 33.333vw !important;
+        width: 33.333vw !important;
+        min-width: 0 !important;
+    }
+    .navbar .offcanvas .nav {
+        justify-content: space-evenly;
+    }
+}
