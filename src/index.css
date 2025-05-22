@@ -7,7 +7,7 @@
     --navbar-bg-color: rgba(20, 20, 25, 0.9);
     --carousel-bg-color: rgba(2, 12, 27, 0.3);
 
-    --text-primary-color: #ffdac4;
+    --text-primary-color: #6b6b6b;
     --text-secondary-color: #d1b094;
     --text-on-accent-color: #f0f0f0;
     --accent-primary-color: #d95757;
@@ -74,16 +74,12 @@ h2 {
     max-width: 33.333vw !important;
 }
 
-/* SOLO ajustar justificación y ancho, sin forzar display ni width globales */
-
-/* Navbar principal: solo desktop */
 @media (min-width: 992px) {
     .navbar .navbar-nav {
         justify-content: space-evenly;
     }
 }
 
-/* Offcanvas: solo mobile */
 @media (max-width: 991px) {
     .offcanvas.offcanvas-end.show {
         max-width: 33.333vw !important;
@@ -93,4 +89,31 @@ h2 {
     .navbar .offcanvas .nav {
         justify-content: space-evenly;
     }
+}
+
+.offcanvas-body,
+.offcanvas-body .nav-link,
+.offcanvas-header .offcanvas-title {
+    color: var(--text-on-light-card-color) !important;
+}
+.offcanvas-header .offcanvas-title {
+    color: var(--text-primary-color) !important;
+}
+.offcanvas-body .nav-link.active,
+.offcanvas-body .nav-link:active {
+    color: #fff !important;
+}
+.offcanvas-body .nav-link:hover {
+    color: var(--accent-primary-color) !important;
+}
+.offcanvas-body .badge {
+    color: #fff !important;
+}
+.offcanvas-header .btn-close {
+    filter: invert(1) grayscale(1) brightness(1.5);
+    opacity: 0.8;
+}
+.navbar-nav .nav-link,
+.offcanvas-body .nav-link {
+    color: var(--text-primary-color) !important;
 }
