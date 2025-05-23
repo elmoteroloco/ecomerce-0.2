@@ -93,7 +93,6 @@ export default function Admin({ manejarLoginAdmin }) {
                     onClick={handleAdminLogout}>
                     Cerrar sesión Admin
                 </button>
-                <button className="btn-efecto">Botón de ejemplo</button>
             </section>
         </div>
     )
